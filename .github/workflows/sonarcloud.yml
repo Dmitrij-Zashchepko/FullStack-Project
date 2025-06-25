@@ -1,0 +1,43 @@
+name: SonarCloud Analysis
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+jobs:
+  sonarcloud-scan:
+    name: SonarCloud Scan
+    runs-on: windows-latest  # или ubuntu-latest для Linux
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Полная история коммитов для анализа
+
+      - name: Set up OpenJDK 24
+        uses: actions/setup-java@v3
+        with:
+          java-version: '24.0.1'
+          distribution: 'oracle'
+          cache: 'maven'  # Кэширование для Maven
+
+      - name: Build with Maven
+        run: mvn clean verify -B -DskipTests
+
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=your-org-name
+            -Dsonar.projectKey=your-project-key
+            -Dsonar.sources=src/
+            -Dsonar.java.binaries=target/classes
+            -Dsonar.java.source=24
+            -Dsonar.language=java,sql
+            -Dsonar.sql.dialect=postgresql
+            -Dsonar.sourceEncoding=UTF-8
