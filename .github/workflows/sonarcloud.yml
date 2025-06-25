@@ -7,7 +7,7 @@ on:
 
 env:
   SONAR_ORG: "DmitriJ"
-  SONAR_PROJECT_KEY: "dmitrij-zashchepko-1"
+  SONAR_PROJECT_KEY: "FullStack-Project"
 
 jobs:
   sonarcloud-scan:
