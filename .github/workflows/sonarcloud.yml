@@ -26,7 +26,7 @@ jobs:
             -Dsonar.organization=DmitriJ
             -Dsonar.projectKey=dmitrij-zashchepko-1
             -Dsonar.sources=.
-            -Dsonar.language=java,sql
+            -Dsonar.language=sql
             -Dsonar.sql.dialect=postgresql
             -Dsonar.sourceEncoding=UTF-8
          #  -Dsonar.java.binaries=target/classes
