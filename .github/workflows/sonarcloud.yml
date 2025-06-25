@@ -5,6 +5,10 @@ on:
   pull_request:
     types: [ opened, synchronize, reopened ]
 
+env:
+  SONAR_ORG: "DmitriJ"  # Замените на вашу организацию SonarCloud
+  SONAR_PROJECT_KEY: "dmitrij-zashchepko-1" # Замените на ключ проекта из SonarCloud
+
 jobs:
   sonarcloud-scan:
     name: SonarCloud Scan
@@ -14,23 +18,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Полная история коммитов для анализа
+          fetch-depth: 0
 
-      - name: SonarCloud Scan
+      - name: Run SonarCloud Analysis
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=DmitriJ
-            -Dsonar.projectKey=dmitrij-zashchepko-1
-            -Dsonar.sources=.
+            -Dsonar.organization=${{ env.SONAR_ORG }}
+            -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
+            -Dsonar.sources=FullStack-Project/
             -Dsonar.language=sql
             -Dsonar.sql.dialect=postgresql
             -Dsonar.sourceEncoding=UTF-8
-         #  -Dsonar.java.binaries=target/classes
-         #  -Dsonar.java.source=24
-         #  -Dsonar.language=java,sql
-         #  -Dsonar.sql.dialect=postgresql
-         #  -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.host.url=https://sonarcloud.io
