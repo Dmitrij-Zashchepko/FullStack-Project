@@ -29,7 +29,7 @@ jobs:
           args: >
             -Dsonar.organization=${{ env.SONAR_ORG }}
             -Dsonar.projectKey=${{ env.SONAR_PROJECT_KEY }}
-            -Dsonar.sources=Структура БД/DB_STRUCT.sql
+            -Dsonar.sources=**/*.sql
             -Dsonar.language=sql
             -Dsonar.sql.dialect=postgresql
             -Dsonar.sourceEncoding=UTF-8
