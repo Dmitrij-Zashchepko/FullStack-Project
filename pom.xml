@@ -20,7 +20,7 @@
 
     <properties>
          <sonar.organization>dmitrij-zashchepko-1</sonar.organization>
-         <sonar.projectKey>Dmitrij-Zashchepko:FullStack-Project</sonar.projectKey>
+         <sonar.projectKey>Dmitrij-Zashchepko:JDBC-FS/sonar.projectKey>
          <sonar.host.url>https://sonarcloud.io</sonar.host.url>
          <maven.compiler.source>24</maven.compiler.source>
          <maven.compiler.target>24</maven.compiler.target>
