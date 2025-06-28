@@ -18,11 +18,36 @@
     </dependencies>
 
     <properties>
-        <sonar.organization>dmitrij-zashchepko-1</sonar.organization>
-        <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <maven.compiler.source>24</maven.compiler.source>
-        <maven.compiler.target>24</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+         <java.version>24</java.version>
+         <sonar.organization>dmitrij-zashchepko-1</sonar.organization>
+         <sonar.projectKey>Dmitrij-Zashchepko_FullStack-Project</sonar.projectKey>
+         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+         <sonar.sources>JDBC_FS/src/main/java</sonar.sources>
+         <sonar.java.binaries>JDBC_FS/target/classes</sonar.java.binaries>
+         <maven.compiler.source>24</maven.compiler.source>
+         <maven.compiler.target>24</maven.compiler.target>
+         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <build>
+        <plugins>
+            <!-- Компилятор для OpenJDK 24 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.11.0</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Плагин SonarCloud -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
