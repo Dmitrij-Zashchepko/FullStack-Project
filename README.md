@@ -7,4 +7,4 @@ https://sonarcloud.io/project/overview?id=Dmitrij-Zashchepko_FullStack-Project
 План: 3 часа - Факт: 5 часов
 
 # План - факт на JDBC
-План: 10 часов - факт: 12 часов
+План: 10 часов - факт: ...
