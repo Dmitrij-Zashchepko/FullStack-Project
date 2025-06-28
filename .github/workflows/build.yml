@@ -1,7 +1,8 @@
 name: SonarQube
 on:
   push:
-    branches: [JDBC]
+    branches:
+      - JDBC
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
