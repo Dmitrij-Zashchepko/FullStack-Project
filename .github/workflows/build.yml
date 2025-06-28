@@ -32,4 +32,4 @@ jobs:
       - name: Build and analyze
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.sources=JDBC_FS/src/main/java
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
